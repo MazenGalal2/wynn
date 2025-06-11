@@ -37,42 +37,43 @@
       "last 1 safari version"
     ]
   },
-"devDependencies": {
-  "@playwright/test": "^1.53.0"
-},
-"playwright": {
-  "browsers": [
-    "chromium",
-    "firefox",
-    "webkit"
-  ],
-  "devices": [
-    "Desktop Chrome",
-    "Desktop Firefox",
-    "Desktop Safari"
-  ]
-},
-"jest": {
-  "testEnvironment": "jsdom",
-  "transform": {
-    "^.+\\.(js|jsx|ts|tsx)$": "babel-jest"
+  "devDependencies": {
+    "@playwright/test": "^1.53.0",
+    "@types/node": "^24.0.0"
   },
-  "moduleFileExtensions": [
-    "js",
-    "jsx",
-    "ts",
-    "tsx",
-    "json",
-    "node"
-  ],
-  "setupFilesAfterEnv": [
-    "@testing-library/jest-dom/extend-expect"
-  ]
-},
-"homepage": ".",
-"license": "MIT",
-"repository": {
-  "type": "git",
-  "url": "https://github.com/MazenGalal2/wynn.git"
-}
+  "playwright": {
+    "browsers": [
+      "chromium",
+      "firefox",
+      "webkit"
+    ],
+    "devices": [
+      "Desktop Chrome",
+      "Desktop Firefox",
+      "Desktop Safari"
+    ]
+  },
+  "jest": {
+    "testEnvironment": "jsdom",
+    "transform": {
+      "^.+\\.(js|jsx|ts|tsx)$": "babel-jest"
+    },
+    "moduleFileExtensions": [
+      "js",
+      "jsx",
+      "ts",
+      "tsx",
+      "json",
+      "node"
+    ],
+    "setupFilesAfterEnv": [
+      "@testing-library/jest-dom/extend-expect"
+    ]
+  },
+  "homepage": ".",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/MazenGalal2/wynn.git"
+  }
 }
