@@ -32,7 +32,7 @@ export class BasePage {
   async clickUploadButton() {
     await this.UploadButton.click();
   }
-  async dragAndDropFile(targetSelector: string, filePath: string, fileName: string) {
+  async dragAndDropFile(targetSelector: string, filePath: string, fileName: string) { //helper function to drag and drop a file
     const buffer = fs.readFileSync(filePath);
     await this.page.evaluate(
       async ({ selector, name, bufferBase64 }) => {
