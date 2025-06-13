@@ -21,7 +21,6 @@ test.describe("UI Testing for the internet.herokuapp", () => {
   test("Uploading without files", async ({ page }) => {
     await basepage.clickUploadButtonWithoutFiles();
   });
-
   test("Uploading file with very long name", async ({ page }) => {
     const fileChooserPromise = page.waitForEvent("filechooser"); // Waits for a file chooser event (triggered when an upload dialog opens)
     await basepage.clickChooseFileButton();
@@ -68,7 +67,6 @@ test.describe("UI Testing for the internet.herokuapp", () => {
     await basepage.clickUploadButton();
     await expect(page.getByRole("heading")).toContainText("File Uploaded!");
   });
-
   test("Uploading xlsx", async ({ page }) => {
     const fileChooserPromise = page.waitForEvent("filechooser"); // Waits for a file chooser event (triggered when an upload dialog opens)
     await basepage.clickChooseFileButton();
@@ -77,7 +75,6 @@ test.describe("UI Testing for the internet.herokuapp", () => {
     await basepage.clickUploadButton();
     await expect(page.getByRole("heading")).toContainText("File Uploaded!");
   });
-
   test("Uploading pdf", async ({ page }) => {
     const fileChooserPromise = page.waitForEvent("filechooser"); // Waits for a file chooser event (triggered when an upload dialog opens)
     await basepage.clickChooseFileButton();
