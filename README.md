@@ -68,3 +68,55 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+### Prerequisities
+
+Node.js (v18 or later recommended)
+npm (comes with Node.js)
+Git (for cloning the repository and version control)
+Playwright (installed via npm as a dev dependency)
+
+## 📂 Detailed Component Descriptions
+
+### `tests/utilities-files/`
+This folder contains all the files used for upload testing.  
+You can add any type of file here (images, PDFs, Excel files, videos, etc.), and the automated tests will pick up and attempt to upload each file in this directory.  
+**Purpose:**  
+- To provide a flexible and easily extendable set of test files for validating the file upload functionality.
+
+---
+
+### `tests/base-file.ts`
+This file defines the `BasePage` class, which encapsulates common actions and helper methods for your Playwright tests.  
+**Key features:**
+- **Selectors for UI elements:** Provides easy access to the "Choose File" and "Upload" buttons.
+- **Page verification methods:** Includes methods to verify main page texts and handle error scenarios.
+- **Drag-and-drop helper:** Implements a robust `dragAndDropFile` method that simulates dragging and dropping a file onto the upload area using browser events and file data.
+- **Reusability:** Centralizes common logic so your test files remain clean and focused on test scenarios.
+
+---
+
+### `tests/first-test.spec.ts` (Uploading Files Tests)
+This is your main Playwright test file for file upload scenarios.  
+**What it does:**
+- **Iterates through all files in `utilities-files`:** Automatically finds and uploads each file in the folder.
+- **Uses `BasePage` helpers:** Calls the `dragAndDropFile` method for each file.
+- **Assertions:** After each upload, checks that the file name appears in the upload area, ensuring the upload was successful.
+- **Debugging:** Optionally logs the upload area’s content for troubleshooting.
+
+**Example test logic:**
+```typescript
+for (const fileName of files) {
+  const filePath = path.join(UTILITIES_DIR, fileName);
+  await basepage.dragAndDropFile("#drag-drop-upload", filePath, fileName);
+  await expect(page.locator("#drag-drop-upload")).toContainText(fileName);
+  await page.waitForTimeout(1000);
+}
+```
+
+**In summary:**  
+- `utilities-files` holds your test materials files.
+- `base-file.ts` provides reusable page actions and drag-and-drop logic.
+- `first-test.spec.ts` automates the upload and verification of all files in `utilities-files`.
+---
+
